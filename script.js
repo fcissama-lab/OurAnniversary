@@ -19,7 +19,7 @@ const errorMessage = document.getElementById("errorMessage");
 if (enterBtn && passwordInput) {
     function checkPassword() {
         if (passwordInput.value === "1010") {
-            goToPage("home.html");
+            window.location.href = "home.html";
         } else {
             errorMessage.textContent = "hmm... I don't think that's it ♡";
             passwordInput.value = "";

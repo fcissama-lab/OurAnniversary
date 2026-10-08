@@ -16,8 +16,11 @@ if (startBtn) startBtn.addEventListener("click", () => {
 const enterBtn = document.getElementById("enterBtn");
 const passwordInput = document.getElementById("passwordInput");
 const errorMessage = document.getElementById("errorMessage");
+
 if (enterBtn && passwordInput) {
-    function checkPassword() {
+    function checkPassword(e) {
+        if (e) e.preventDefault();
+        
         if (passwordInput.value === "1010") {
             window.location.href = "home.html";
         } else {
@@ -26,8 +29,14 @@ if (enterBtn && passwordInput) {
             passwordInput.focus();
         }
     }
+    
     enterBtn.addEventListener("click", checkPassword);
-    passwordInput.addEventListener("keydown", e => { if (e.key === "Enter") checkPassword(); });
+    
+    passwordInput.addEventListener("keydown", e => {
+        if (e.key === "Enter") {
+            checkPassword(e);
+        }
+    });
 }
 
 function toggleMemory(card) { card.classList.toggle("open"); }
